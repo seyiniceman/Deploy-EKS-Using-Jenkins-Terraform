@@ -1,16 +1,72 @@
 # Deploy Amazon EKS Using Jenkins and Terraform
-
 Provisioning an Amazon EKS cluster with Terraform, automated by a Jenkins CI/CD pipeline following IaC best practices.
+
+## Project Overview
+
+This project demonstrates how to provision a highly available Amazon Elastic Kubernetes Service (EKS) cluster using Terraform while automating the entire Infrastructure as Code (IaC) deployment process through a Jenkins CI/CD pipeline.
+
+The infrastructure is created entirely from code, including the Virtual Private Cloud (VPC), networking components, security groups, and the EKS cluster. Jenkins automates the Terraform workflow, ensuring every deployment follows a consistent, repeatable, and version-controlled process.
+
+This project showcases real-world DevOps practices such as Infrastructure as Code, Continuous Integration, automation, cloud provisioning, and Kubernetes orchestration on AWS.
+
+                    ## Architecture Diagram 
+                    
+                    +----------------------+
+                    |      Developer       |
+                    +----------+-----------+
+                               |
+                               | Git Push
+                               v
+                    +----------------------+
+                    |       GitHub         |
+                    +----------+-----------+
+                               |
+                               | Webhook
+                               v
+                    +----------------------+
+                    |      Jenkins CI      |
+                    +----------+-----------+
+                               |
+                 +-------------+--------------+
+                 |                            |
+                 v                            v
+        terraform init              terraform validate
+                 |                            |
+                 +-------------+--------------+
+                               |
+                               v
+                      terraform plan
+                               |
+                               v
+                      terraform apply
+                               |
+                               v
+               +-------------------------------+
+               |             AWS               |
+               +-------------------------------+
+               |  VPC                          |
+               |  Public & Private Subnets     |
+               |  Internet Gateway             |
+               |  Route Tables                 |
+               |  Security Groups              |
+               |  Amazon EKS Cluster           |
+               +---------------+---------------+
+                               |
+                               v
+                    aws eks update-kubeconfig
+                               |
+                               v
+                         kubectl get nodes
+                               |
+                               v
+                 Kubernetes Cluster Ready
 
 ## Objectives
 * Automate infrastructure provisioning
 * Apply best practices
 * Demonstrate a full DevOps workflow
 
-## Architecture
-Developer pushes to GitHub -> Jenkins triggers Terraform init, validate, plan, and apply -> AWS resources created (VPC, subnets, etc.) -> EKS cluster comes up.
-
-## Technologies
+## Technologies Used
 * AWS
 * EKS
 * Terraform
@@ -51,3 +107,18 @@ Developer pushes to GitHub -> Jenkins triggers Terraform init, validate, plan, a
 5. Run `terraform apply`
 6. Configure kubectl: `aws eks update-kubeconfig --region <region> --name <cluster-name>`
 7. Verify nodes: `kubectl get nodes`
+
+8. ## Skills Demonstrated
+
+- Infrastructure as Code (Terraform)
+- Amazon EKS
+- Jenkins CI/CD
+- Kubernetes
+- AWS Networking
+- Git & GitHub
+- AWS CLI
+- Linux Administration
+
+- ## Project Outcome
+- 
+Successfully automated the provisioning of an Amazon EKS cluster using Terraform through a Jenkins CI/CD pipeline. The solution follows Infrastructure as Code principles, provides a repeatable deployment process, and demonstrates modern DevOps practices for cloud infrastructure automation.
