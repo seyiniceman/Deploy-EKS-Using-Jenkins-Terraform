@@ -123,3 +123,11 @@ Kubernetes Cluster Ready
 ## Project Outcome
 
 Successfully automated the provisioning of an Amazon EKS cluster using Terraform through a Jenkins CI/CD pipeline. The solution provisions AWS networking resources, deploys a production-ready Kubernetes control plane, and provides a repeatable, version-controlled infrastructure deployment using Infrastructure as Code (IaC) principles.
+
+
+# Author
+
+**Seyi Akinmusere**
+
+DevOps | Cloud Engineer | AWS | Terraform | Jenkins | Docker | Kubernetes
+
